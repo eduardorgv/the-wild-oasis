@@ -1,10 +1,9 @@
-import Spinner from 'ui/Spinner';
-import { useSettings } from 'features/settings/useSettings';
-import { useUpdateSetting } from 'features/settings/useUpdateSetting';
-
-import Form from 'ui/Form';
-import FormRow from 'ui/FormRow';
-import Input from 'ui/Input';
+import { FormRow } from '../../ui/FormRow';
+import { useSettings } from './useSettings';
+import { useUpdateSettings } from './useUpdateSettings';
+import Form from '../../ui/Form';
+import Input from '../../ui/Input';
+import Spinner from '../../ui/Spinner';
 
 function UpdateSettingsForm() {
   const {
@@ -16,9 +15,8 @@ function UpdateSettingsForm() {
     } = {},
     isLoading,
   } = useSettings();
-  const { mutate: updateSetting, isLoading: isUpdating } = useUpdateSetting();
+  const { updateSetting, isUpdating } = useUpdateSettings();
 
-  // return <Spinner />;
   if (isLoading) return <Spinner />;
 
   function handleBlur(e, field) {
@@ -28,7 +26,6 @@ function UpdateSettingsForm() {
     updateSetting({ [field]: value });
   }
 
-  // This time we are using UNCONTROLLED fields, so we will NOT store state
   return (
     <Form>
       <FormRow label='Minimum nights/booking'>
