@@ -18,7 +18,7 @@ export const Sidebar = () => {
     <StyledSiderbar>
       <Logo />
       <MainNav />
-      <Uploader />
+      {/* <Uploader /> */}
     </StyledSiderbar>
   );
 };
